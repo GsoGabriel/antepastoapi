@@ -1,6 +1,12 @@
 package com.antepastocompany.antepastoapi.repository;
 
+import com.antepastocompany.antepastoapi.entity.Antepasto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AntepastoRepository extends JpaRepository {
+import java.util.Optional;
+
+public interface AntepastoRepository extends JpaRepository<Antepasto, Long> {
+
+    Optional<Antepasto> findByFlavor(String flavor);
+
 }

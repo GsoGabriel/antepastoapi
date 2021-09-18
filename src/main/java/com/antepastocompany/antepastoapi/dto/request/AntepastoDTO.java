@@ -1,34 +1,33 @@
-package com.antepastocompany.antepastoapi.entity;
+package com.antepastocompany.antepastoapi.dto.request;
 
 import com.antepastocompany.antepastoapi.enums.AntepastoFlavor;
 import com.antepastocompany.antepastoapi.enums.Spicy;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+
 import javax.persistence.*;
 
-@Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Antepasto {
+public class AntepastoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String flavor;
+    @NotEmpty
+    private AntepastoFlavor flavor;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @NotEmpty
     private Spicy spicy;
 
-    @Column(nullable = false)
+    @NotEmpty
     private int quantity;
 
-    @Column(nullable = false)
+    @NotEmpty
     private Double price;
-
 }
