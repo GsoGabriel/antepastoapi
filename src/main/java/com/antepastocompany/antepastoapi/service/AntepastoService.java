@@ -14,11 +14,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class AntepastoService {
 
     private final AntepastoRepository antepastoRepository;
     private final AntepastoMapper antepastoMapper = AntepastoMapper.INSTANCE;
+
+    @Autowired
+    public AntepastoService(AntepastoRepository antepastoRepository) {
+        this.antepastoRepository = antepastoRepository;
+    }
 
     public MessageResponseDTO createAntepasto(AntepastoDTO antepastoDTO){
         Antepasto antepastoToSave = antepastoMapper.toModel(antepastoDTO);

@@ -14,14 +14,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/antepasto")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class AntepastoController {
 
     private AntepastoService antepastoService;
 
+    @Autowired
+    public AntepastoController(AntepastoService antepastoService) {
+        this.antepastoService = antepastoService;
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createAntepasto(@RequestBody @Valid AntepastoDTO antepastoDTO){
+    public MessageResponseDTO createAntepasto(@RequestBody AntepastoDTO antepastoDTO){
         return antepastoService.createAntepasto(antepastoDTO);
     }
 
